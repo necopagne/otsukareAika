@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ドンマイあいか</title>
+  <title>がんばろうね</title>
   <style>
     body {
       display: flex;
@@ -11,8 +11,8 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
+      background-color: #222;
+      font-family: 'Arial', sans-serif;
     }
 
     .container {
@@ -23,23 +23,44 @@
       padding: 15px 30px;
       font-size: 18px;
       cursor: pointer;
-      background-color: #4CAF50;
+      background-color: #FF4081;
       color: white;
       border: none;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, transform 0.2s;
     }
 
     button:hover {
-      background-color: #45a049;
+      background-color: #E91E63;
+      transform: scale(1.05);
     }
 
     #message {
       margin-top: 20px;
-      font-size: 24px;
-      color: #333;
+      font-size: 0;
+      color: #FFF;
+      text-shadow: 2px 2px 8px #FF4081, -2px -2px 8px #9C27B0;
       display: none;
+      animation: popIn 0.6s forwards, blink 1s 0.6s infinite;
+    }
+
+    @keyframes popIn {
+      0% {
+        font-size: 0;
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        font-size: 48px;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
     }
   </style>
 </head>
@@ -52,8 +73,11 @@
   <script>
     function showMessage() {
       const message = document.getElementById('message');
+      const button = document.querySelector('button');
       message.style.display = 'block';
+      button.style.display = 'none';
     }
   </script>
 </body>
 </html>
+
